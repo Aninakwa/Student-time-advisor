@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Settings | Time Advisor</title>
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .settings-container { max-width: 600px; margin: 2rem auto; }
+    .settings-container fieldset { margin-bottom: 1.5rem; }
+    .settings-container label { display: flex; justify-content: space-between; padding: 0.5rem 0; }
+    .settings-container input[type=number] { width: 4rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Settings</h1>
+    <nav>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="profile.html">Profile</a>
+      <a href="settings.html">Settings</a>
+      <a href="history.html">History</a>
+      <a href="help.html">Help</a>
+      <button id="logout-btn">Log Out</button>
+    </nav>
+  </header>
+
+  <main class="settings-container">
+    <fieldset>
+      <legend>Pomodoro Durations (minutes)</legend>
+      <label>
+        Work Session:
+        <input type="number" id="work-length" min="1" />
+      </label>
+      <label>
+        Short Break:
+        <input type="number" id="short-break-length" min="1" />
+      </label>
+      <label>
+        Long Break:
+        <input type="number" id="long-break-length" min="1" />
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Notifications</legend>
+      <label>
+        Sound Alerts:
+        <input type="checkbox" id="notify-sound" />
+      </label>
+      <label>
+        Browser Notifications:
+        <input type="checkbox" id="notify-browser" />
+      </label>
+    </fieldset>
+
+    <div style="text-align:right;">
+      <button id="save-settings" class="primary">Save Settings</button>
+    </div>
+  </main>
+
+  <script type="module" src="../firebaseConfig.js"></script>
+  <script type="module" src="../js/settings-main.js"></script>
+</body>
+</html>

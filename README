@@ -1,0 +1,142 @@
+```markdown
+# Time Advisor
+
+**Time Advisor** is a Pomodoro‑based web app to help you schedule, track, and complete tasks with reminders, timers, and productivity suggestions.
+
+---
+
+## Features
+
+- **User Authentication** via Firebase Auth (email/password, Google, Facebook)
+- **Task Management**  
+  - Create/edit tasks with title, details, due date, work/break lengths, cycles, and schedule time  
+  - Dashboard groups tasks by due date, shows only today’s or incomplete tasks  
+  - Edit/Delete/Start buttons per task; completed tasks are visually marked and cannot be restarted  
+- **Pomodoro Timer**  
+  - Per‑task work/break cycles, with cycle counter (e.g. “Cycle 2 of 4”)  
+  - Progress bar, Start/Pause/Reset controls, and optional background music  
+  - Bell and browser notifications at interval end  
+- **Motivation Panel** rotates quotes every 15 seconds
+- **History** page: list & filter all tasks by status and due‑date range  
+- **Settings** page: customize default work/break lengths, sound & browser notifications  
+- **Profile** page: view & change display name; upload avatar via Firebase Storage
+- **Global Loading Spinner** for all asynchronous operations
+
+---
+
+## Folder Structure
+
+```
+
+student-time-advisor/
+├─ public/
+│  ├─ assets/                 # bell.mp3, music.mp3, default-avatar.png
+│  ├─ pages/
+│  │  ├─ dashboard.html
+│  │  ├─ task.html
+│  │  ├─ do-task.html
+│  │  ├─ history.html
+│  │  ├─ settings.html
+│  │  ├─ profile.html
+│  │  └─ help.html
+│  ├─ style.css
+│  ├─ firebaseConfig.js
+│  └─ js/
+│     ├─ main.js
+│     ├─ task-main.js
+│     ├─ do-task.js
+│     ├─ history.js
+│     ├─ settings.js
+│     ├─ profile.js
+│     ├─ loading.js
+│     ├─ timer.js
+│     ├─ firestore.js
+│     ├─ auth.js
+│     ├─ ui.js
+│     └─ suggestions.js
+└─ README.md
+
+````
+
+---
+
+## Quick Start
+
+1. **Clone the repo**  
+   ```bash
+   git clone https://github.com/your‑repo-link.git
+   cd student-time-advisor
+````
+
+2. **Install Firebase CLI & Cloud SDK** (for Storage CORS)
+
+   ```bash
+   npm install -g firebase-tools
+   gcloud auth login
+   gcloud config set project your‑firebase-project-id
+   ```
+
+3. **Configure Firebase**
+
+   * Create a Firebase project.
+   * Enable **Authentication** (Email/Password, Google, Facebook).
+   * Enable **Firestore** and **Storage**.
+   * In `public/firebaseConfig.js`, replace the config object with your project’s values.
+   * In Storage → Rules, allow authenticated users to read/write `/userPhotos/{uid}`.
+   * Set CORS on your bucket:
+
+     ```bash
+     # in project root, create cors.json as described in README
+     gsutil cors set cors.json gs://<your‑bucket‑name>
+     ```
+
+4. **Serve Locally**
+   You can use any static server (e.g. VSCode Live Server, `http-server`, etc.), ensuring you serve `public/` at the root.
+
+   ```bash
+   npx http-server public
+   # or
+   live-server public
+   ```
+
+5. **Access the App**
+   Open `http://127.0.0.1:8080/dashboard.html` (or your server’s address). You’ll be redirected to log in or sign up.
+
+---
+
+## Deployment
+
+Use Firebase Hosting or any static‑site host:
+
+```bash
+# Initialize hosting (if not already)
+firebase init hosting
+
+# Build / copy `public/` into your hosting target
+firebase deploy --only hosting
+```
+
+---
+
+## Developer Notes
+
+* **Date Handling** uses [date-fns](https://date-fns.org/) via CDN for parsing/formatting and `isToday()`.
+* **Chart.js** is included in History but can be removed if not using graphs.
+* **Storage CORS**: make sure your bucket name matches `storageBucket` in config and CORS is set.
+* **Loading Overlay**: import `showLoading()`/`hideLoading()` around async calls.
+
+---
+
+## Contributing
+
+Pull requests and issues are welcome! Please fork the repo and open a PR with your changes.
+
+---
+
+## License
+
+MIT © \[Your Name]
+*Built with ❤️ and the Pomodoro technique.*
+
+```
+```

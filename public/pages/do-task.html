@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Do Task • Time Advisor</title>
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .timer-panel { text-align:center; margin-top:2rem; }
+    #timer-mode { font-size:1.5rem; margin-bottom:0.5rem; }
+    #timer-display { font-size:3rem; margin-bottom:1rem; }
+    progress { width:80%; height:1.5rem; margin-bottom:1rem; }
+    .controls, .music-control { margin:0.5rem 0; }
+    .controls button, .music-control button { margin:0 0.5rem; padding:0.5rem 1rem; }
+    #cycle-counter { font-size:1rem; color:#555; margin-bottom:0.5rem; }
+    #task-details { margin:1rem 0; font-style:italic; color:#333; }
+    #complete-banner { font-size:1.5rem; text-align:center; margin-top:1rem; color:green; display:none; }
+  </style>
+</head>
+<body>
+    <!-- Global Loading Spinner -->
+<div id="loading-overlay" class="hidden">
+    <div class="spinner"></div>
+  </div>
+  
+  <header>
+    <h1 id="task-title">Loading…</h1>
+      <nav>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="profile.html">Profile</a>
+      <a href="settings.html">Settings</a>
+      <a href="history.html">History</a>
+      <a href="help.html">Help</a>
+      <button id="logout-btn">Log Out</button>
+    </nav>
+    <p id="task-details"></p>
+
+  </header>
+  <header>
+
+  </header>
+
+  <main class="container">
+    <div id="complete-banner">🎉 Task Complete!</div>
+    <main class="container do-task-container">
+        <div id="complete-banner">🎉 Task Complete!</div>
+      
+        <div class="panels">
+          <!-- Existing Timer Panel -->
+          <section class="timer-panel">
+            <div id="cycle-counter">Cycle 0 of 0</div>
+            <div id="timer-mode">—</div>
+            <div id="timer-display">00:00</div>
+            <progress id="timer-progress" value="0" max="100"></progress>
+            <div class="controls">
+              <button id="start-btn" class="primary">Start</button>
+              <button id="pause-btn">Pause</button>
+              <button id="reset-btn">Reset</button>
+            </div>
+            <div class="music-control">
+              <button id="toggle-music">Play Music</button>
+            </div>
+          </section>
+      
+          <!-- New Quote Panel -->
+          <aside class="quote-panel">
+            <div id="motivational-quote" class="quote">Loading motivation…</div>
+          </aside>
+        </div>
+      </main>
+  </main>
+
+  <audio id="bell-sound" src="../assets/bell.mp3" preload="auto"></audio>
+  <audio id="bg-music" src="../assets/music.mp3" loop preload="auto"></audio>
+
+  <script type="module" src="../firebaseConfig.js"></script>
+  <script type="module" src="../js/do-task.js"></script>
+</body>
+</html>

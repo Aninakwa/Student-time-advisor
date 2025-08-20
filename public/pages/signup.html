@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Sign Up | Time Advisor</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <!-- Global Loading Spinner -->
+<div id="loading-overlay" class="hidden">
+  <div class="spinner"></div>
+</div>
+
+  <div class="auth-container">
+    <h2>Sign Up</h2>
+    <form id="signup-form">
+      <label for="signup-name">Name</label>
+      <input type="text" id="signup-name" required>
+      <label for="signup-email">Email</label>
+      <input type="email" id="signup-email" required>
+      <label for="signup-password">Password</label>
+      <input type="password" id="signup-password" required>
+      <button type="submit" class="primary">Create Account</button>
+    </form>
+
+    <div class="social-login">
+      <button id="google-signup" class="primary">Continue with Google</button>
+      <button id="facebook-signup" class="primary">Continue with Facebook</button>
+    </div>
+
+    <p>Already have an account? <a href="login.html">Log In</a></p>
+  </div>
+
+  <script type="module" src="../firebaseConfig.js"></script>
+<script type="module" src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Task • Time Advisor</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <!-- Global Loading Spinner -->
+<div id="loading-overlay" class="hidden">
+  <div class="spinner"></div>
+</div>
+
+<header>
+  <h1 id="page-title">Loading…</h1>
+  <nav>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="profile.html">Profile</a>
+    <a href="settings.html">Settings</a>
+    <a href="history.html">History</a>
+    <a href="help.html">Help</a>
+    <button id="logout-btn">Log Out</button>
+  </nav>
+
+  <main class="container">
+    <!-- Task Form (for create/edit) -->
+    <form id="task-form" class="task-form">
+      <label>
+        Title:
+        <input type="text" id="task-title-input" required />
+      </label>
+
+      <label>
+        Details:
+        <textarea id="task-details-input"></textarea>
+      </label>
+
+      <label>
+        Due Date:
+        <input type="date" id="task-due-input" />
+      </label>
+
+      <label>
+        Work Duration (min):
+        <input type="number" id="task-work-input" min="1" value="25" required />
+      </label>
+
+      <label>
+        Short Break (min):
+        <input type="number" id="task-break-input" min="1" value="5" required />
+      </label>
+
+      <label>
+        Cycles:
+        <input type="number" id="task-cycles-input" min="1" value="1" required />
+      </label>
+
+      <label>
+        Schedule Time:
+        <input type="time" id="task-time-input" />
+      </label>
+
+      <label>
+        <input type="checkbox" id="task-active-input" checked />
+        Active
+      </label>
+
+      <div class="form-actions">
+        <button type="submit" class="primary">Save Task</button>
+        <button type="button" id="task-cancel-btn">Cancel</button>
+      </div>
+    </form>
+  </main>
+
+  <script type="module" src="../firebaseConfig.js"></script>
+  <script type="module" src="../js/task-main.js"></script>
+</body>
+</html>

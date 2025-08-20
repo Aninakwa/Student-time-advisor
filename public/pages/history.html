@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>History | Time Advisor</title>
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .history-container { max-width: 800px; margin: 2rem auto; }
+    .filters { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .filters label { display: flex; flex-direction: column; font-size: 0.9rem; }
+    #task-history-list { list-style: none; padding: 0; }
+    #task-history-list li {
+      padding: 0.75rem;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .task-info { flex: 1; }
+    .task-title { font-weight: bold; }
+    .task-dates { font-size: 0.85rem; color: #555; }
+    .badge { padding: 0.2em 0.5em; border-radius: 4px; font-size: 0.8rem; }
+    .badge.completed { background: #d4edda; color: #155724; }
+    .badge.pending   { background: #fff3cd; color: #856404; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Task History</h1>
+    <nav>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="profile.html">Profile</a>
+      <a href="settings.html">Settings</a>
+      <a href="history.html">History</a>
+      <a href="help.html">Help</a>
+      <button id="logout-btn">Log Out</button>
+    </nav>
+  </header>
+
+  <main class="history-container">
+    <!-- Filters -->
+    <div class="filters">
+      <label>
+        Status
+        <select id="filter-status">
+          <option value="all">All</option>
+          <option value="completed">Completed</option>
+          <option value="pending">Pending</option>
+        </select>
+      </label>
+      <label>
+        Due Start
+        <input type="date" id="filter-start" />
+      </label>
+      <label>
+        Due End
+        <input type="date" id="filter-end" />
+      </label>
+      <button id="filter-clear">Clear Filters</button>
+    </div>
+
+    <!-- Task list -->
+    <ul id="task-history-list"></ul>
+  </main>
+
+  <script type="module" src="../firebaseConfig.js"></script>
+  <script type="module" src="../js/history.js"></script>
+</body>
+</html>

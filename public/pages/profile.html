@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Profile | Time Advisor</title>
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .profile-container { max-width: 500px; margin: 2rem auto; position: relative; }
+    /* Loading overlay */
+    #loading-overlay {
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(255,255,255,0.8);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 10;
+    }
+    #loading-overlay.hidden { display: none; }
+    .spinner {
+      width: 3rem; height: 3rem;
+      border: 0.5rem solid #ddd;
+      border-top-color: #4361ee;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Photo upload */
+    .photo-upload-wrapper {
+      position: relative;
+      width: 100px; height: 100px;
+      margin: 0 auto 1rem;
+    }
+    #photo-preview {
+      width: 100%; height: 100%;
+      object-fit: cover; border-radius: 50%;
+      border: 2px solid #ccc;
+    }
+    .photo-btn {
+      position: absolute;
+      bottom: 0; right: 0;
+      background: #fff; border: none;
+      font-size: 1.2rem; padding: 0.2rem;
+      border-radius: 50%; cursor: pointer;
+      box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    }
+    .hidden { display: none; }
+
+    /* Form styling */
+    .profile-container label {
+      display: flex; flex-direction: column;
+      margin-bottom: 1rem;
+    }
+    .profile-container input {
+      padding: 0.5rem; font-size: 1rem; margin-top: 0.25rem;
+    }
+    #save-profile {
+      display: block;
+      margin-top: 1rem;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+    <header>
+        <h1>My Profile</h1>
+        <nav>
+          <a href="dashboard.html">Dashboard</a>
+          <a href="profile.html">Profile</a>
+          <a href="settings.html">Settings</a>
+          <a href="history.html">History</a>
+          <a href="help.html">Help</a>
+          <button id="logout-btn">Log Out</button>
+        </nav>
+      </header>
+
+  <main class="profile-container">
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="hidden">
+      <div class="spinner"></div>
+    </div>
+
+    <!-- Photo Upload -->
+    <div class="photo-upload-wrapper">
+      <img id="photo-preview" src="/assets/default-avatar.png" alt="Profile Photo" />
+      <button id="change-photo-btn" class="photo-btn" title="Change Photo">✏️</button>
+      <input type="file" id="photo-file-input" accept="image/*" class="hidden" />
+    </div>
+
+    <!-- Profile Form -->
+    <form id="profile-form">
+      <label>
+        Display Name
+        <input type="text" id="display-name" required />
+      </label>
+
+      <label>
+        Email (read‑only)
+        <input type="email" id="email" disabled />
+      </label>
+
+      <button type="submit" id="save-profile" class="primary">Save Changes</button>
+    </form>
+  </main>
+
+  <script type="module" src="../firebaseConfig.js"></script>
+  <script type="module" src="../js/profile.js"></script>
+</body>
+</html>

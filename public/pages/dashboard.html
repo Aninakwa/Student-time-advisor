@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Dashboard | Time Advisor</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <!-- Global Loading Spinner -->
+<div id="loading-overlay" class="hidden">
+  <div class="spinner"></div>
+</div>
+
+  <header>
+    <h1>Time Management Advisor</h1>
+    <nav>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="profile.html">Profile</a>
+      <a href="settings.html">Settings</a>
+      <a href="history.html">History</a>
+      <a href="help.html">Help</a>
+      <button id="logout-btn">Log Out</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Tasks Panel -->
+    <aside class="tasks-panel">
+      <h2>Today's Tasks</h2>
+      <ul id="task-list"></ul>
+      <a href="task.html?new=1" class="primary">+ Add Task</a>
+    </aside>
+
+    <!-- Timer & Suggestions -->
+    <section class="timer-panel">
+      
+      <div class="suggestions">
+        <h3>Suggestions</h3>
+        <ul id="suggestion-list"></ul>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="../firebaseConfig.js"></script>
+  <script type="module" src="../js/main.js"></script>
+</body>
+</html>
